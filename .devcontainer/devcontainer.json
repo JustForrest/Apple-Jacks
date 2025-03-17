@@ -36,6 +36,12 @@
         }
     },
 
+    "settings": {
+        "terminal.integrated.env.linux": {
+            "PGSSL": "require"  // Ensure SSL is required for Neon PostgreSQL connections
+        }
+    },
+
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
