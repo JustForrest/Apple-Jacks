@@ -7,7 +7,6 @@
     "start": "node index.js",
     "init-db": "prisma generate && prisma db push",
     "studio": "prisma studio",
-    "poststart": "npx prisma init",
     "init-after-appsmith": "node scripts/init-after-appsmith.js"
   },
   "dependencies": {
