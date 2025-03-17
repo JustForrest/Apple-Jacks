@@ -1,40 +1,64 @@
 {
-	"name": "Node.js",
-	"build": {
-		"dockerfile": "Dockerfile"
-	},
-	"features": {
-		"ghcr.io/devcontainers/features/common-utils:2": {
-			"installZsh": "true",
-			"username": "node",
-			"upgradePackages": "true"
-		},
-		"ghcr.io/devcontainers/features/node:1": {
-			"version": "none"
-		},
-		"ghcr.io/devcontainers/features/git:1": {
+    "name": "Appsmith Development",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "installZsh": "true",
+            "username": "node",
+            "upgradePackages": "true"
+        },
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "none"
+        },
+        "ghcr.io/devcontainers/features/git:1": {
             "version": "latest",
             "ppa": "false"
+        },
+        "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+    },
+
+    // Configure tool-specific properties.
+    "customizations": {
+        // Configure properties specific to VS Code.
+        "vscode": {
+            // Add the IDs of extensions you want installed when the container is created.
+            "extensions": [
+                "dbaeumer.vscode-eslint",
+                "ms-azuretools.vscode-docker",
+                "prisma.prisma",
+                "mtxr.sqltools",
+                "mtxr.sqltools-driver-pg"
+            ]
         }
-	},
+    },
 
-	// Configure tool-specific properties.
-	"customizations": {
-		// Configure properties specific to VS Code.
-		"vscode": {
-			// Add the IDs of extensions you want installed when the container is created.
-			"extensions": [
-				"dbaeumer.vscode-eslint"
-			]
-		}
-	},
+    // Forward ports for Appsmith, PostgreSQL, and other services
+    "forwardPorts": [3000, 5432, 80],
+    "portsAttributes": {
+        "3000": {
+            "label": "Appsmith Client",
+            "onAutoForward": "notify"
+        },
+        "5432": {
+            "label": "PostgreSQL",
+            "onAutoForward": "notify"
+        },
+        "80": {
+            "label": "Appsmith Server",
+            "onAutoForward": "notify"
+        }
+    },
 
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+    // Use 'postCreateCommand' to run commands after the container is created.
+    "postCreateCommand": "npm install",
 
-	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "yarn install",
+    // Mount Docker socket to allow Docker commands within the container
+    "mounts": [
+        "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+    ],
 
-	// Set `remoteUser` to `root` to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	"remoteUser": "node"
+    // Set `remoteUser` to `root` to connect as root instead.
+    "remoteUser": "node"
 }
