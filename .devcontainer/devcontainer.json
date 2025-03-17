@@ -41,6 +41,9 @@
 
     // Use 'postCreateCommand' to run commands after the container is created.
     "postCreateCommand": "npm install",
+    
+    // Add this line to start Appsmith when the Codespace starts
+    "postStartCommand": "cd ${containerWorkspaceFolder} && docker compose up -d",
 
     // Set `remoteUser` to `root` to connect as root instead.
     "remoteUser": "node"
