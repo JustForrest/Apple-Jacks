@@ -42,7 +42,8 @@
         }
     },
 
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    "forwardPorts": [5432],
 	// "forwardPorts": [],
 
     // Use 'postCreateCommand' to run commands after the container is created.
