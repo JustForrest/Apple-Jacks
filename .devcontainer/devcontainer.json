@@ -30,8 +30,8 @@
                 "prisma.prisma",
                 "mtxr.sqltools",
                 "mtxr.sqltools-driver-pg",
-		"Github.copilot",
-		"Github.copilot-chat"
+		        "Github.copilot",
+		        "Github.copilot-chat"
             ]
         }
     },
@@ -41,11 +41,6 @@
 
     // Use 'postCreateCommand' to run commands after the container is created.
     "postCreateCommand": "npm install",
-
-    // Mount Docker socket to allow Docker commands within the container
-    "mounts": [
-        "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
-    ],
 
     // Set `remoteUser` to `root` to connect as root instead.
     "remoteUser": "node"
