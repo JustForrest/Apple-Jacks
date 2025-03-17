@@ -30,15 +30,15 @@
                 "prisma.prisma",
                 "mtxr.sqltools",
                 "mtxr.sqltools-driver-pg",
-		        "Github.copilot",
-		        "Github.copilot-chat"
-            ]
-        }
-    },
-
-    "settings": {
-        "terminal.integrated.env.linux": {
-            "PGSSL": "require"  // Ensure SSL is required for Neon PostgreSQL connections
+                "Github.copilot",
+                "Github.copilot-chat"
+            ],
+            // Configure settings specific to VS Code
+            "settings": {
+                "terminal.integrated.env.linux": {
+                    "PGSSL": "require"  // Ensure SSL is required for Neon PostgreSQL connections
+                }
+            }
         }
     },
 
@@ -46,7 +46,7 @@
 	// "forwardPorts": [],
 
     // Use 'postCreateCommand' to run commands after the container is created.
-    "postCreateCommand": "npm install",
+    "postCreateCommand": "npm install && npx prisma init",
     
     // Add this line to start Appsmith when the Codespace starts
     "postStartCommand": "cd ${containerWorkspaceFolder} && docker compose up -d",
