@@ -29,7 +29,9 @@
                 "ms-azuretools.vscode-docker",
                 "prisma.prisma",
                 "mtxr.sqltools",
-                "mtxr.sqltools-driver-pg"
+                "mtxr.sqltools-driver-pg",
+		"Github.copilot",
+		"Github.copilot-chat"
             ]
         }
     },
