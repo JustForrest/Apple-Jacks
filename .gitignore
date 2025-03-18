@@ -1,5 +1,6 @@
 # Entire stacks directory (since it contains generated/runtime data)
 stacks/
+stacks.backup
 
 # Log files
 *.log
