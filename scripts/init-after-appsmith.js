@@ -29,7 +29,7 @@ function checkAppsmithReady() {
 }
 
 // Check every 5 seconds
-async function waitForAppsmith(maxAttempts = 24) { // 2 minutes max
+async function waitForAppsmith(maxAttempts = 60) { // 5 minutes max
   let attempts = 0;
   
   while (attempts < maxAttempts) {
